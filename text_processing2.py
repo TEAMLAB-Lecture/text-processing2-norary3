@@ -28,7 +28,23 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
+    digit_string = []
+    # num_digits = list(range(10))
+    # num_digits = list(map(lambda num: str(num), num_digits))
+    eng_digits = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    # dictionary  = dict(zip(num_digits,eng_digits))
+
+    # for char in input_string :
+    #     if char  in num_digits :
+    #         digit_string.append(dictionary[char])
+
+    # for char in input_string :
+    #     if char.isdigit() :
+    #         digit_string.append(eng_digits[int(char)])
+
+    digit_string = [ eng_digits[int(char)] for char in input_string if char.isdigit() ]
+
+    digit_string = ' '.join(digit_string)
     return digit_string
 
 
@@ -64,5 +80,21 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+    camelcase_str = underscore_str.strip("_")
+    if not('_' in camelcase_str) : return camelcase_str
+
+
+    camelcase_str = camelcase_str.split("_")
+    camelcase_str = [ w.lower() if i == 0 else w.capitalize() for (i,w) in enumerate(camelcase_str) ]
+
+    # camelcase_str = list(camelcase_str.lower())
+
+    # for i in range(len(camelcase_str)) :
+    #     if camelcase_str[i] == "_" :
+    #         if len(camelcase_str) > i+1 : camelcase_str[i+1] = camelcase_str[i+1].upper()
+
+    # camelcase_str = camelcase_str.replace("_","")
+
+    camelcase_str = "".join(camelcase_str)
+
     return camelcase_str
